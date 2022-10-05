@@ -1,0 +1,47 @@
+header img{
+    width: 50px;
+    height: 50px;
+   }
+   .navbar .nav-item:hover .nav-link{   
+       color: rgb(56, 129, 129);
+   }
+   .btn-busqueda:hover{   
+       color: rgb(56, 129, 129);
+   }
+   .navbar .nav-item:active .nav-link{   
+    color: rgb(56, 129, 129);
+}
+.navbar .text-Intro:hover{
+    color: rgb(56, 129, 129);
+}
+body{
+    background-color: rgb(13,13,63);
+}
+main h1{
+    color: white;
+    align-items: center;
+}
+main img{
+    height: 350px;
+    width: 350px;
+}
+   
+  
+   
+   .text-Intro{
+       color: white;
+   }
+   .text-Pag{
+       color:white;
+   }
+   
+   
+  
+   
+   .text-Inicio{
+       color: white;
+   }
+ 
+   
+   
+   

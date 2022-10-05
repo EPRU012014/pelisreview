@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link
+            rel="stylesheet"
+            th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+    />
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/Icono.jpg}">
+    <link rel="stylesheet" th:href="@{/css/CrearPelicula.css}"/>
+</head>
+<body class="bg-dark">
+<ul th:replace="layout/Plantilla :: navbar_admin"></ul>
+<div class="container mt-4">
+    <form class="bg-info p-3 rounded-2" method="POST" th:action="@{/admin/pelicula/crear}" enctype="multipart/form-data" th:object="${pelicula}">
+        <input type="hidden" name="id" th:field="*{id}">
+        <div class="row mb-3">
+            <div class="col text-center">
+                <h2>Película</h2>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col mb-3">
+                <input type="text" placeholder="Título" name="nombre" class="form-control" th:field="*{titulo}" autocomplete="none" required />
+            </div>
+            <div class="col mb-3">
+                <input type="number" placeholder="Duración en minutos" name="nombre1" th:field="*{duracion}" class="form-control" autocomplete="none" required />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col mb-3">
+                <input type="number" placeholder="Puntuación" th:field="*{puntuacion}" name="nombre" class="form-control" autocomplete="none" required />
+            </div>
+            <div class="col mb-3">
+                <input type="number" placeholder="Año" name="nombre1" th:field="*{ano}" class="form-control" autocomplete="none" required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h5>Selecciona uno o varios géneros (para seleccionar más de un género, manten presionado la tecla CTRL).</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <select multiple class="form-control" id="exampleFormControlSelect2">
+                    <option th:each="genero : ${generos}" th:value="${genero.id}" th:text="${genero.nombre}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h5>Selecciona una clasificación de acuerdo a la edad para la película.</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <select th:field="*{clasificacion}" class="form-control" id="exampleFormControlSelect1">
+                    <option th:each="clasificacion : ${clasificaciones}" th:value="${clasificacion.id}" th:text="${clasificacion.nombre}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="row mt-4 mb-4">
+            <div class="col">
+                <input tpye="text" placeholder="Argumento" th:field="*{argumento}" name="nombre" class="form-control" autocomplete="none" required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-4">
+                <h5>Seleccione una imagen( MAX 5 MB)</h5> <input name="file" id="file" type="file" accept=".jpg">
+            </div>
+        </div>
+        <div class="row text-center col mb-3">
+            <div class="col">
+                <input type="submit" class="btn btn-danger btn-lg" value="Completar">
+            </div>
+        </div>
+    </form>
+</div>
+<footer th:replace="layout/Plantilla :: footer_admin"></footer>
+</body>
+</html>

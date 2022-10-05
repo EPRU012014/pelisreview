@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link
+            rel="stylesheet"
+            th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+    />
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <title>Genero</title>
+</head>
+<body class="bg-dark">
+<ul th:replace="layout/Plantilla :: navbar_admin"></ul>
+<div class="container mt-4">
+    <form class="bg-info p-3 rounded-2" method="POST" th:action="@{/admin/genero/crear}" th:object="${genero}">
+        <input type="hidden" name="id" th:field="*{id}">
+        <div class="row mb-3">
+            <div class="col text-center">
+                <h2>Genero</h2>
+            </div>
+        </div>
+        <div class="row mb-3 container">
+            <div class="col text-center">
+                <input type="text" placeholder="Título" name="nombre" class="form-control" th:field="*{nombre}" autocomplete="none" required /><br>
+                <input type="submit" class="btn btn-danger btn-lg" value="Completar">
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

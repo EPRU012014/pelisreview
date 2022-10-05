@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registrate</title>
+  <link
+          rel="stylesheet"
+          th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+  />
+  <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+  <link rel="stylesheet" th:href="@{/css/Iniciosesion.css}"/>
+  <link rel="icon" type="image/x-icon" th:href="@{/img/Icono.jpg}">
+  <link rel="stylesheet" th:hhref="@{/css/Registro.css}" />
+</head>
+<body class="bg-dark">
+  <header>
+    <nav id="header" class="navbar navbar-expand-lg bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand text-Intro" href="#">
+          <img th:src="@{/img/Icono.jpg}">PeliReview
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link text-Pag" aria-current="page" th:href="@{/}" >Página Principal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-Pag" aria-current="page" th:href="@{/login}" >Iniciar Sesión</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="container mt-4">
+      <div class="row mb-3">
+        <div class="col text-center text-light bg-dark">
+          <h1> Registrate a PeliReview</h1>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col text-center text-white">
+          <small> Únete a la comunidad más crítica y apasionada del cine.</small>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <!--Formulario-->
+        <form class="bg-info p-3 rounded-2" th:action="@{/crearCuenta}" method="POST" th:object="${usuario}">
+          <input type="hidden" name="id" th:field="*{id}">
+          <div class="text-center">
+            <div class="row align-items-start">
+              <div class="col mb-3">
+                <input type="text" placeholder="Primer Nombre" name="nombre1"  th:field="*{primerNombre}" class="form-control" autocomplete="none"
+                  required />
+              </div>
+              <div class="col">
+                <input type="text" placeholder="Segundo Nombre" th:field="*{segundoNombre}" name="nombre2" class="form-control">
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col mb-3">
+                <input type="text" placeholder="Primer Apellido" th:field="*{primerApellido}" name="apellido1" class="form-control" autocomplete=none
+                  required />
+              </div>
+              <div class="col mb-3">
+                <input type="text" placeholder="Segundo Apellido" th:field="*{segundoApellido}" name="apellido2" class="form-control">
+              </div>
+              <div class="col mb-3">
+                <input type="text" placeholder="Fecha de Nacimiento" th:field="*{nacimiento}" name="nacimiento" class="form-control" onfocus="(this.type='date')">
+              </div>
+            </div>
+            <div class="row align-items-end">
+              <div class="col mb-3">
+                <input type="number" placeholder="Edad" name="edad" th:field="*{edad}" class="form-control" autocomplete=none required disabled />
+              </div>
+              <div class="col mb-3">
+                <input type="email" placeholder="Correo Electrònico" name="correo" th:field="*{email}" class="form-control" autocomplete=none
+                  required />
+              </div>
+            </div>
+            <div class="row align-items-end">
+              <div class="col">
+                <input type="password" placeholder="Contraseña" th:field="*{contrasena}" name="repass" class="form-control"
+                       autocomplete=none required />
+              </div>
+              <div class="col">
+                <input type="password" placeholder="Confirma Contraseña"  name="pass" class="form-control" autocomplete=none
+                       required />
+              </div>
+            </div>
+          </div>
+          <!--Button-->
+          <div class="text-center">
+            <br>
+            <input type="submit" class="btn btn-danger btn-lg" value="REGISTRARSE">
+          </div>
+        </form>
+            <div class="row">
+                <img th:src="@{/img/Cinta2.png}" width="100%">
+            </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

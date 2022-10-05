@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:fragment="head">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+            rel="stylesheet"
+            th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+    />
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <title>Generos</title>
+</head>
+<body class="bg-dark">
+<ul th:replace="layout/Plantilla :: navbar_admin"></ul>
+<div class="container text-center">
+    <div class="col" th:if="${generos != null and !generos.empty}">
+        <table class="table table-info table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="genero: ${generos}">
+                <th scope="row" th:text="${genero.id}"></th>
+                <td th:text="${genero.nombre}"></td>
+                <td ><a th:href="@{/admin/genero/editar/}  +${genero.id}"><button class="btn btn-primary">Editar</button></a></td>
+                <td ><a th:href="@{/admin/genero/eliminar/} +${genero.id} "><button class="btn btn-danger" >Eliminar</button></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col" th:if="${generos == null or generos.empty}">
+        <span class="text-light bg-dark">No Hay generos</span>
+    </div>
+</div>
+<footer th:replace="layout/Plantilla :: footer_admin"></footer>
+</body>
+</html>

@@ -1,0 +1,57 @@
+header img{
+    width: 50px;
+    height: 50px;
+   }
+   .navbar .nav-item .nav-link{
+    color: white;
+}
+.navbar .text-Intro{
+    color: white;
+}
+.navbar .nav-item:hover .nav-link{   
+    color: rgb(56, 129, 129);
+}
+.navbar .text-Intro:hover{
+    color: rgb(56, 129, 129);
+}
+
+
+
+
+body{
+    background-color: rgb(13, 63, 63);
+}
+.imaginacion img{
+    width: 80%;
+    height: 25vw;
+}
+
+.card h2{
+    color: white;
+}
+.card h3{
+    color: white;
+}
+.asertijo h6{
+    color: black;
+}
+.card{
+    color: white;
+    background-color: rgba(0,   0, 0);
+    
+   
+     width: 100%;
+    height: 25vw;
+    
+ }
+ .asertijo{
+    color: black;
+    background-color: white;
+    width: 100%;
+    height: 13vw;
+ }
+
+ .btn-pagina{
+    align-self: flex-end;
+ }
+ 

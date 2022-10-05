@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link
+            rel="stylesheet"
+            th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+    />
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/Icono.jpg}">
+    <link rel="stylesheet" th:href="@{/css/Iniciosesion.css}"/>
+</head>
+<body class="bg-dark">
+<header>
+    <nav id="header" class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-Intro" href="#">
+                <img th:src="@{/img/Icono.jpg}">PeliReview
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-Inicio" th:href="@{/}">Página Principal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-Inicio" th:href="@{/registro}">Registrarse</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container mt-4">
+        <div class="row mb-3">
+            <div class="col text-center text-white">
+                <h1> Califica tus Peliculas Favoritas</h1>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col text-center text-white">
+                <small> Inicia sesión para calificar todas las películas que quieras.</small>
+            </div>
+        </div>
+        <div class="row mb-3">
+
+            <form class="bg-info p-3 rounded-2" method="post" th:action="@{/login}">
+                <div class="text-center">
+                    <div class="row align-items-start">
+                        <div class="col mb-3">
+                            <div class="login">
+                                <h2>Iniciar Sesión</h2>
+                                <div class="text-center">
+                                    <div class="align-items-start">
+                                        <div class="col mb-3">
+                                            <input type="email" placeholder="Correo electronico" name="username"
+                                                   class="form-control" autocomplete="none" id="username" required >
+                                        </div>
+                                        <div class="col mb-3">
+                                            <input type="password" placeholder="Contraseña" name="password"
+                                                   class="form-control" autocomplete="none" id="password" required>
+                                        </div>
+                                    </div>
+                                    <div class="text-center col mb-3">
+                                        <input type="submit" class="btn btn-danger btn-lg" value="Iniciar Sesión">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <img th:src="@{/img/Cinta2.png}" width="100%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+
+</html>

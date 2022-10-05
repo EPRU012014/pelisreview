@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<header th:fragment="header">
+    <nav id="header" class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-Intro" href="#">
+                <img th:src="@{/img/Icono.jpg}">PeliReview
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-Pag" aria-current="page" sec:authorize="hasRole('ROLE_ADMIN')"
+                           th:href="@{/admin/pelicula}">Administracion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-Pag" aria-current="page" sec:authorize="!isAuthenticated()"
+                           th:href="@{/login}">Iniciar Sesión</a>
+                        <a class="nav-link text-Pag" aria-current="page" sec:authorize="isAuthenticated()"><span
+                                sec:authentication="name">Nombre Usuario</span></a>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <form method="post" th:action="@{/logout}">
+                            <a class="nav-link text-Pag" aria-current="page" href="#"
+                               onclick="this.parentNode.submit();">Cerrar
+                                Sesión</a>
+                        </form>
+                    </li>
+                    <li class="nav-item" sec:authorize="!isAuthenticated()">
+                        <a class="nav-link text-Pag" aria-current="page" th:href="@{/registro}">Registrarse</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--NavBar Administrador-->
+<ul class="nav nav-pills nav-fill" th:fragment="navbar_admin">
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{/admin/pelicula/crear}">Agregar una Pelicula</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{/admin/pelicula}">Peliculas</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{/admin/genero}">Generos</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{/admin/usuario}">Usuarios</a>
+    </li>
+</ul>
+<footer th:fragment="footer_admin" class="nav nav-pills nav-fill">
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{/}">Regresar a PeliReview</a>
+    </li>
+</footer>
+</body>
+</html>

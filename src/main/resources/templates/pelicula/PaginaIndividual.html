@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Página Individual</title>
+    <link
+            rel="stylesheet"
+            th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+    />
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/IconoPelisReview.ico}">
+    <link rel="stylesheet" th:href="@{/css/PaginaIndividual.css}"/>
+</head>
+<body>
+<header>
+    <nav id="header" class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-Intro" href="#">
+                <img th:src="@{/img/Icono.jpg}">PeliReview
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-Pag" aria-current="page" th:href="@{/}">Página Principal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-Pag" aria-current="page" th:href="@{/pelicula/}">Regresar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="mt-4 container">
+    <h1 class="text-center text-light" th:text="${pelicula.titulo}"></h1>
+    <div class="row">
+        <div class="mt-4 col">
+            <img th:src="@{/img/pelicula/}+${pelicula.imagen}" class="card-img-top" alt="guion">
+        </div>
+        <div class="col">
+            <div class="bg-dark text-light">
+                <div class="mt-4 container">
+                    <h5 class="mb-3">Puntuacion: <span th:text="${pelicula.puntuacion}"></span></h5>
+                    <h5 class="mb-1">Argumento:</h5>
+                    <span class="mb-3" th:text="${pelicula.argumento}"></span>
+                    <h5 class="mb-3">Duracion: <span th:text="${pelicula.duracion}"></span> (min)</h5>
+                    <h5 class="mb-3">Año: <span th:text="${pelicula.ano}"></span></h5>
+                    <h5 class="mb-3">Género(s):  <br><span th:each="genero : ${pelicula.generos}">
+                                <span th:text="${genero.nombre}">
+                                </span>
+                            </span></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 bg-light">
+        <div class="container">
+            <h1 > Opiniones:</h1>
+            <div th:each="opinion : ${pelicula.opiniones}">
+                <h6 th:text="${opinion.usuario.primerNombre}">Pepito perezxs</h6>
+                <p th:text="${opinion.comentario}">Considero que la película transporta a una época en la cual quisiera vivir, por lo cual
+                    siento que me enamora la forma en que está ambientada.
+                </p>
+                <hr>
+            </div>
+            <form method="POST" th:action="@{/pelicula/opinion/agregar/}+${pelicula.id}" th:object="${opinion}">
+                <input type="hidden" name="id" th:field="*{id}">
+                <textarea  class="form-control" th:field="*{comentario}" id="exampleFormControlTextarea1" rows="3" required>
+                </textarea>
+                <br>
+                <input type="submit" class="btn btn-dark" value="Agregar una opinion">
+            </form>
+            <br>
+        </div>
+    </div>
+</div>
+</body>
+</html>

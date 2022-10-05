@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Páginas</title>
+    <link
+            rel="stylesheet"
+            th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+    />
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/Icono.jpg}">
+    <link rel="stylesheet" th:href="@{/css/Paginas.css}"/>
+<body>
+<header th:replace="layout/Plantilla :: header"></header>
+<!--
+ <header>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand text-Intro" href="#">
+          <img src="@{/img/Icono.jpg}">PeliReview
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">PeliReviewers Reúnanse...</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link text-Pag" aria-current="page" th:href="@{/}" >Página Principal</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-Pag" aria-current="page" th:href="@{/Login}" >Iniciar Sesión</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-Inicio" href="RegistroUsuario.html" >Registrarse</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-Pag" aria-current="page" href="Clasificacion.html" >Clasificar película</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle barra" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Género
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" th:href="@{}">Acción</a></li>
+                  <li><a class="dropdown-item" th:href="@{}">Drama</a></li>
+                  <li><a class="dropdown-item" th:href="@{}">Fantasía</a></li>
+                  <li><a class="dropdown-item" th:href="@{}">Psicológico</a></li>
+                  <li><a class="dropdown-item" th:href="@{}">Terror</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle barra" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Clasificación
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" th:href="@{}">Niños</a></li>
+                  <li><a class="dropdown-item" th:href="@{}">Jóvenes</a></li>
+                  <li><a class="dropdown-item" th:href="@{}">Adultos</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Buscar Película" aria-label="Search">
+              <button class="btn btn-busqueda" type="submit">Buscar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+-->
+<main id="main">
+</main>
+<section class="mt-4 mb-4">
+    <div class="container">
+        <div class="row">
+            <div class="mb-4 col-md-3" th:each="pelicula,i : ${peliculas}">
+                <div class="card">
+                    <img th:src="@{/img/pelicula/}+${pelicula.imagen}" class="card-img-top" alt="guion">
+                    <div class="card-body">
+                        <h5 th:text="${pelicula.titulo}" class="card-title"></h5>
+                        <span th:text="${pelicula.argumento}" class="card-text"></span><br>
+                        <a class="btn btn-primary" th:href="@{/pelicula/}+${pelicula.id}">Ver sinopsis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer id="footer" class="pb-4 pt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center text-uppercase">
+                <a th:href="@{https://www.marvel.com/}" target="_blank">Marvel</a>
+            </div>
+            <div class="col text-center text-uppercase">
+                <a th:href="@{https://www.dc.com/}" target="_blank">DC</a>
+            </div>
+            <div class="col text-center text-uppercase">
+                <a th:href="@{https://www.starwars.com/}" target="_blank">Star Wars</a>
+            </div>
+            <div class="col text-center text-uppercase">
+                <a th:href="@{https://intl.startrek.com/}" target="_blank">Star Trek</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
